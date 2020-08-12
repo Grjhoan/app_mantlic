@@ -1,0 +1,25 @@
+{
+  "name": "Mantenedor de licencias",
+  "author": {
+    "name": "Jhoan Zabala",
+    "email": "jhoan.zabala@zerviz.cl",
+    "url": "https://zerviz.cl"
+  },
+  "defaultLocale": "en",
+  "private": true,
+  "location": {
+    "support": {
+      "nav_bar": "assets/iframe.html"
+    }
+  },
+  "parameters": [
+    {
+      "name": "token",
+      "type": "text",
+      "secure": true,
+      "required": true
+    }
+  ],
+  "version": "2.0",
+  "frameworkVersion": "2.0"
+}
