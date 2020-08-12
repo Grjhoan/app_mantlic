@@ -1,0 +1,102 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- http://garden.zendesk.com -->
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css">
+  <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+  <link href="yadcf-master/jquery.datatables.yadcf.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <!-- https://github.com/zendesk/zendesk_app_framework_sdk -->
+  <script type="text/javascript" src="https://assets.zendesk.com/apps/sdk/2.0/zaf_sdk.js"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>  
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
+  <!-- Select2 plugin -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+  <script src="apps.js"></script>
+  <script src="yadcf-master/jquery.dataTables.yadcf.js"></script>
+  <script src="http://momentjs.com/downloads/moment.min.js"></script>
+  <style>
+    .l_sp{
+      color: #10357F;
+    }
+    .l_ch{
+      color: rgb(255, 160, 0);
+    }
+    #alinea{
+      margin-left: 20px;
+    }
+    .div-table{
+      padding: 20px;
+    }
+    #counts{
+      margin: 0px 0px 40px 20px;
+    }
+    .yadcf-filter-reset-button {
+      display: none;
+    }
+
+  </style>
+</head>
+<body>
+<div id="loader"><img src="loader.gif"></div>
+<div id="capatable">
+  <br/>
+    <p id="alinea"><b>Resumen por país (<span class="l_sp">Support</span> | <span class="l_ch">Chat</span>)</b> 
+      <span style="float:right" class="alert alert-warning">
+        <strong>Nota:</strong> Los Agentes light no se consideran en este resumen, en la tabla de abajo puede consultarlos por Rol.
+    </span>
+    </p>
+  <br/>
+      <div class="div-table">
+          <table class="table table-condensed">
+          <thead>
+            <tr>
+              <th>Colombia<p><b><span id="count_c" class="l_sp"></span></b> | <b><span id="count_c_c" class="l_ch"></span></b></p></th>
+              <th>Paraguay<p><b><span id="count_p" class="l_sp"></span></b> | <b><span id="count_p_c" class="l_ch"></span></b></p></th>
+              <th>Bolivia<p><b><span id="count_b" class="l_sp"></span></b> | <b><span id="count_b_c" class="l_ch"></span></b></p></th>
+              <th>El Salvador<p><b><span id="count_s" class="l_sp"></span></b> | <b><span id="count_s_c" class="l_ch"></span></b></p></th>
+              <th>Guatemala<p><b><span id="count_g" class="l_sp"></span></b> | <b><span id="count_g_c" class="l_ch"></span></b></p></th>
+              <th>Honduras<p><b><span id="count_hn" class="l_sp"></span></b> | <b><span id="count_hn_c" class="l_ch"></span></b></p></th>
+              <th>Nicaragua<p><b><span id="count_n" class="l_sp"></span></b> | <b><span id="count_n_c" class="l_ch"></span></b></p></th>
+              <th>Costa Rica<p><b><span id="count_cr" class="l_sp"></span></b> | <b><span id="count_cr_c" class="l_ch"></span></b></p></th>
+              <th>Panamá<p><b><span id="count_pa" class="l_sp"></span></b> | <b><span id="count_pa_c" class="l_ch"></span></b></p></th>
+              <th>MIC<p><b><span id="count_mic" class="l_sp"></span></b> | <b><span id="count_mic_c" class="l_ch"></span></b></p></th>
+              
+            </tr>
+          </thead>
+        </table>
+        </div> 
+        <!--SHOW AGENTS-->
+        <div id="div-table-0" class="div-table">
+          <table id="example0" class="display table-condensed table-responsive" style="width:100%">
+              <thead>
+                  <tr>
+                      <th>País</th>
+                      <th>Nombre</th>
+                      <th>Email</th>
+                      <th>Rol</th>
+                      <th>Grupo por defecto</th>
+                      <th>Login Support</th>
+                      <th>Login Chat</th>
+                  </tr>
+              </thead>
+          </table>
+        </div>
+  </div>
+  <!---->
+  <!--footer-->
+</body>
+</html>
